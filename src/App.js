@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-require("jquery-ui");
+import DateUtils from "./utils/time.js";
+
+let date = DateUtils.getDate();
 
 class App extends Component {
   constructor(props) {
@@ -14,9 +16,10 @@ class App extends Component {
   }
 
   handleOnChange(event) {
+    const value = event.target.value;
     const newTimeIndex = event.currentTarget.getAttribute("event-order");
     let newTimes = this.state.times.map(item => item);
-    newTimes[newTimeIndex] = event.target.value;
+    newTimes[newTimeIndex] = value;
     this.setState({
       times: newTimes
     });
@@ -32,7 +35,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Enter your sleep</h1>
+        <h1>{"Enter your sleep for " + date}</h1>
 
         {this.state.times.map((item, index) => {
           return (
