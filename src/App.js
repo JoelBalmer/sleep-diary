@@ -6,12 +6,16 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Enter your sleep</h1>
-        <h3>Time in bed</h3>
-        <input className="bed-time" type="range" min="0" max="5" value=/>
-        <h3>Time asleep</h3>
-        <input className="bed-time" type="range" min="0" max="5" />
-        <h3>Double slider</h3>
-        <ReactSlider defaultValue={[0, 100]} withBars />
+        <h3>Went to bed at</h3>
+        <input
+          className="bed-time"
+          type="range"
+          min="0"
+          max="10"
+          defaultValue="0"
+          list="times"
+          step="1"
+        />
       </div>
     );
   }
