@@ -60,8 +60,10 @@ class App extends Component {
             <div>
               <h3>{"Enter the time you " + sliderTexts[index]}</h3>
               <p className={"timeLabel timeLabel_" + index}>
-                {Number(this.state.times[index]) +
-                  Number(this.state.date.getHours())}
+                {DateUtils.getNewHours(
+                  this.state.date,
+                  this.state.times[index]
+                ) + ":00"}
               </p>
               <input
                 className={"slider slider_" + index}
