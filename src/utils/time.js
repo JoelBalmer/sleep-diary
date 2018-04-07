@@ -1,7 +1,6 @@
-exports.getDate = () => {
-	let date = new Date();
-	const day = date.getDate();
-	const month = date.getMonth() + 1;
-	const year = date.getFullYear();
-	return day + "/" + month + "/" + year;
+exports.getNewHours = (date, hoursToAdd) => {
+	// let newDate = date;
+	// let milsToAdd = hoursToAdd * 60 * 60;
+	// let totalMils = newDate.get
+	// return date.getHours() + hoursToAdd;
 };
