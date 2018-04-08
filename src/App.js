@@ -63,14 +63,13 @@ class App extends Component {
                 {DateUtils.getNewHours(
                   this.state.date,
                   this.state.times[index]
-                ) + ":00"}
+                )}
               </p>
               <input
                 className={"slider slider_" + index}
                 type="range"
                 min="0"
-                max="24"
-                step="1"
+                max="288"
                 defaultValue={this.state.times[index]}
                 onChange={this.handleOnChange}
                 event-order={index}
