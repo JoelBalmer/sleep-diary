@@ -17,7 +17,7 @@ class App extends Component {
     );
 
     this.state = {
-      times: [5, 6, 13, 14],
+      times: [66, 78, 168, 186],
       date: date
     };
 
@@ -34,6 +34,8 @@ class App extends Component {
     this.setState({
       times: newTimes
     });
+
+    console.log(value);
   }
 
   render() {
@@ -66,6 +68,7 @@ class App extends Component {
                 )}
               </p>
               <input
+                list="times"
                 className={"slider slider_" + index}
                 type="range"
                 min="0"

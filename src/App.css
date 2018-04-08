@@ -6,9 +6,17 @@
 }
 
 h1 {
-	margin: 40px;
+	margin: 20px;
+}
+
+h3 {
+	font-style: italic;
 }
 
 input {
 	width: 50%;
+}
+
+p {
+	margin: 5px;
 }
