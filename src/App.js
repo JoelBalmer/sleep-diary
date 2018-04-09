@@ -18,10 +18,12 @@ class App extends Component {
 
     this.state = {
       times: [66, 78, 168, 186],
+      wakeTime: 0,
       date: date
     };
 
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleWakeChange = this.handleWakeChange.bind(this);
   }
 
   handleOnChange(event) {
@@ -38,12 +40,19 @@ class App extends Component {
     console.log(value);
   }
 
+  handleWakeChange(event) {
+    this.setState({
+      wakeTime: event.target.value * 5
+    });
+  }
+
   render() {
     const sliderTexts = [
       "got into bed",
       "fell asleep",
       "woke up",
-      "got out of bed"
+      "got out of bed",
+      "were awake for in the night"
     ];
 
     return (
@@ -80,6 +89,18 @@ class App extends Component {
             </div>
           );
         })}
+
+        <h3>{"Enter the time you " + sliderTexts[4]}</h3>
+        <p className="wake-time">
+          {DateUtils.formatWakeTime(this.state.wakeTime)}
+        </p>
+        <input
+          type="range"
+          min="0"
+          max="144"
+          defaultValue="0"
+          onChange={this.handleWakeChange}
+        />
       </div>
     );
   }
