@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Calendar from "./components/calendar/calendar.js";
 import DayEntry from "./components/day_entry/day_entry.js";
+import DateUtils from "./utils/time.js";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
@@ -8,49 +9,27 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    let currentDate = new Date();
-    let date = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth() + 1,
-      currentDate.getDate(),
-      17
-    );
+    const currentDate = DateUtils.getCurrentDate();
 
     this.state = {
-      times: [66, 78, 168, 186],
-      wakeTime: 0,
-      date: date
+      view: "calendar",
+      date: currentDate
     };
 
-    this.handleOnChange = this.handleOnChange.bind(this);
-    this.handleWakeChange = this.handleWakeChange.bind(this);
+    this.handleCalendarClick = this.handleCalendarClick.bind(this);
   }
 
-  handleOnChange(event) {
-    //converts slider value to minutes
-    const value = event.target.value;
-    const newTimeIndex = event.currentTarget.getAttribute("event-order");
-    let newTimes = this.state.times.map(item => item);
-
-    newTimes[newTimeIndex] = value;
-
-    this.setState({
-      times: newTimes
-    });
-  }
-
-  handleWakeChange(event) {
-    //convert slider value to minutes
-    this.setState({
-      wakeTime: event.target.value
-    });
+  handleCalendarClick(date, jsEvent, view) {
+    alert("handling day click!" + date);
   }
 
   render() {
     return (
       <div className="App">
-        <Calendar />
-        <DayEntry />
+        {this.state.view === "calendar" && (
+          <Calendar handleDayClick={this.handleCalendarClick} />
+        )}
+        {this.state.view === "dayEntry" && <DayEntry date={this.state.date} />}
       </div>
     );
   }

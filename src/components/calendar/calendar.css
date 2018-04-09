@@ -1,1 +1,14 @@
-	
+#calendar {
+	width: 600px;
+	margin: 0 auto;
+}
+
+@media (max-width: 770px) {
+	#calendar {
+		width: 90%;
+	}
+}
+
+.active-date {
+	background: lightblue;
+}

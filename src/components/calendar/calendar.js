@@ -14,7 +14,10 @@ class Calendar extends React.Component {
 			theme: "standard",
 			timezone: "local",
 			defaultView: "month",
-			contentHeight: "auto"
+			contentHeight: "auto",
+			dayClick: function(date, jsEvent, view) {
+				$(this).css("background", "lightblue");
+			}
 		});
 	}
 

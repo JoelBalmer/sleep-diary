@@ -29,3 +29,14 @@ exports.subtractDates = (date, mins1, mins2) => {
 	let difference = moment(endDate).diff(startDate, "minutes");
 	return this.formatWakeTime(difference);
 };
+
+exports.getCurrentDate = () => {
+	let currentDate = new Date();
+	let date = new Date(
+		currentDate.getFullYear(),
+		currentDate.getMonth() + 1,
+		currentDate.getDate(),
+		17
+	);
+	return date;
+};

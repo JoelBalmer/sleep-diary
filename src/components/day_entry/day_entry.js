@@ -6,18 +6,9 @@ class DayEntry extends React.Component {
 	constructor(props) {
 		super(props);
 
-		let currentDate = new Date();
-		let date = new Date(
-			currentDate.getFullYear(),
-			currentDate.getMonth() + 1,
-			currentDate.getDate(),
-			17
-		);
-
 		this.state = {
 			times: [66, 78, 168, 186],
-			wakeTime: 0,
-			date: date
+			wakeTime: 0
 		};
 
 		this.handleOnChange = this.handleOnChange.bind(this);
@@ -59,11 +50,11 @@ class DayEntry extends React.Component {
 				<div className="diary-entry col-lg-7 col-md-7 col-sm-7 col-xs-7">
 					<h1>
 						{"Enter your sleep for " +
-							this.state.date.getDate() +
+							this.props.date.getDate() +
 							"/" +
-							this.state.date.getMonth() +
+							this.props.date.getMonth() +
 							"/" +
-							this.state.date.getFullYear()}
+							this.props.date.getFullYear()}
 					</h1>
 
 					{this.state.times.map((item, index) => {
@@ -74,7 +65,7 @@ class DayEntry extends React.Component {
 								</h3>
 								<p className={"timeLabel timeLabel-" + index}>
 									{DateUtils.getNewHours(
-										this.state.date,
+										this.props.date,
 										this.state.times[index]
 									)}
 								</p>
@@ -110,7 +101,7 @@ class DayEntry extends React.Component {
 					<h3>Total time in bed</h3>
 					<p>
 						{DateUtils.subtractDates(
-							this.state.date,
+							this.props.date,
 							this.state.times[0],
 							this.state.times[3]
 						)}
@@ -118,7 +109,7 @@ class DayEntry extends React.Component {
 					<h3>Total time asleep</h3>
 					<p>
 						{DateUtils.subtractDates(
-							this.state.date,
+							this.props.date,
 							this.state.times[1],
 							this.state.times[2] - this.state.wakeTime
 						)}
