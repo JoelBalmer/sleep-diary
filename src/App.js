@@ -59,7 +59,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="row">
-          <div className="diary-entry col-lg-9 col-md-9 col-sm-9 col-xs-9">
+          <div className="diary-entry col-lg-7 col-md-7 col-sm-7 col-xs-7">
             <h1>
               {"Enter your sleep for " +
                 this.state.date.getDate() +
@@ -104,7 +104,7 @@ class App extends Component {
               onChange={this.handleWakeChange}
             />
           </div>
-          <div className="overview col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <div className="overview col-lg-5 col-md-5 col-sm-5 col-xs-5">
             <h1>Overview</h1>
             <h3>Time in bed</h3>
             <p>
@@ -112,6 +112,14 @@ class App extends Component {
                 this.state.date,
                 this.state.times[0],
                 this.state.times[3]
+              )}
+            </p>
+            <h3>Time asleep</h3>
+            <p>
+              {DateUtils.subtractDates(
+                this.state.date,
+                this.state.times[1],
+                this.state.times[2]
               )}
             </p>
           </div>
