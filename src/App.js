@@ -107,6 +107,7 @@ class App extends Component {
             />
           </div>
           <div className="overview col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <hr />
             <h1>Overview</h1>
             <h3>Total time in bed</h3>
             <p>
