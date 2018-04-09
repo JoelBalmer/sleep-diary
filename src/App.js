@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DateUtils from "./utils/time.js";
 import Calendar from "./components/calendar/calendar.js";
 import DayEntry from "./components/day_entry/day_entry.js";
 import "bootstrap/dist/css/bootstrap.css";
@@ -48,15 +47,6 @@ class App extends Component {
   }
 
   render() {
-    //create array for less repeated code
-    const sliderTexts = [
-      "got into bed",
-      "fell asleep",
-      "woke up",
-      "got out of bed",
-      "were awake for in the night"
-    ];
-
     return (
       <div className="App">
         <Calendar />
