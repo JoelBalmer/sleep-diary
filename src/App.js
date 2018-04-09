@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import DateUtils from "./utils/time.js";
+import Calendar from "./components/calendar/calendar.js";
+import DayEntry from "./components/day_entry/day_entry.js";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-
-//add date picker
 
 class App extends Component {
   constructor(props) {
@@ -59,84 +59,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="row">
-          <div className="diary-entry col-lg-7 col-md-7 col-sm-7 col-xs-7">
-            <h1>
-              {"Enter your sleep for " +
-                this.state.date.getDate() +
-                "/" +
-                this.state.date.getMonth() +
-                "/" +
-                this.state.date.getFullYear()}
-            </h1>
-
-            {this.state.times.map((item, index) => {
-              return (
-                <div>
-                  <h3>{"Enter the time you " + sliderTexts[index]}</h3>
-                  <p className={"timeLabel timeLabel-" + index}>
-                    {DateUtils.getNewHours(
-                      this.state.date,
-                      this.state.times[index]
-                    )}
-                  </p>
-                  <input
-                    className={"slider slider-" + index}
-                    type="range"
-                    min="0"
-                    max="288"
-                    defaultValue={this.state.times[index]}
-                    onChange={this.handleOnChange}
-                    event-order={index}
-                  />
-                </div>
-              );
-            })}
-
-            <h3>{"Enter the time you " + sliderTexts[4]}</h3>
-            <p className="wake-time-label">
-              {DateUtils.formatWakeTime(this.state.wakeTime * 5)}
-            </p>
-            <input
-              className="wake-time-slider"
-              type="range"
-              min="0"
-              max="288"
-              defaultValue="0"
-              onChange={this.handleWakeChange}
-            />
-          </div>
-          <div className="overview col-lg-5 col-md-5 col-sm-5 col-xs-5">
-            <hr />
-            <h1>Overview</h1>
-            <h3>Total time in bed</h3>
-            <p>
-              {DateUtils.subtractDates(
-                this.state.date,
-                this.state.times[0],
-                this.state.times[3]
-              )}
-            </p>
-            <h3>Total time asleep</h3>
-            <p>
-              {DateUtils.subtractDates(
-                this.state.date,
-                this.state.times[1],
-                this.state.times[2] - this.state.wakeTime
-              )}
-            </p>
-            <h3>Sleep efficiency</h3>
-            <p>
-              {Math.round(
-                (this.state.times[2] -
-                  this.state.times[1] -
-                  this.state.wakeTime) /
-                  (this.state.times[3] - this.state.times[0]) *
-                  100
-              ) + "%"}
-            </p>
-          </div>
-        </div>
+        <Calendar />
+        <DayEntry />
       </div>
     );
   }
