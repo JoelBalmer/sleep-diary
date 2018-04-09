@@ -28,6 +28,7 @@ class App extends Component {
   }
 
   handleOnChange(event) {
+    //converts slider value to minutes
     const value = event.target.value;
     const newTimeIndex = event.currentTarget.getAttribute("event-order");
     let newTimes = this.state.times.map(item => item);
@@ -42,7 +43,7 @@ class App extends Component {
   handleWakeChange(event) {
     //convert slider value to minutes
     this.setState({
-      wakeTime: event.target.value * 5
+      wakeTime: event.target.value
     });
   }
 
@@ -73,14 +74,14 @@ class App extends Component {
               return (
                 <div>
                   <h3>{"Enter the time you " + sliderTexts[index]}</h3>
-                  <p className={"timeLabel timeLabel_" + index}>
+                  <p className={"timeLabel timeLabel-" + index}>
                     {DateUtils.getNewHours(
                       this.state.date,
                       this.state.times[index]
                     )}
                   </p>
                   <input
-                    className={"slider slider_" + index}
+                    className={"slider slider-" + index}
                     type="range"
                     min="0"
                     max="288"
@@ -93,20 +94,21 @@ class App extends Component {
             })}
 
             <h3>{"Enter the time you " + sliderTexts[4]}</h3>
-            <p className="wake-time">
-              {DateUtils.formatWakeTime(this.state.wakeTime)}
+            <p className="wake-time-label">
+              {DateUtils.formatWakeTime(this.state.wakeTime * 5)}
             </p>
             <input
+              className="wake-time-slider"
               type="range"
               min="0"
-              max="144"
+              max="288"
               defaultValue="0"
               onChange={this.handleWakeChange}
             />
           </div>
           <div className="overview col-lg-5 col-md-5 col-sm-5 col-xs-5">
             <h1>Overview</h1>
-            <h3>Time in bed</h3>
+            <h3>Total time in bed</h3>
             <p>
               {DateUtils.subtractDates(
                 this.state.date,
@@ -114,13 +116,23 @@ class App extends Component {
                 this.state.times[3]
               )}
             </p>
-            <h3>Time asleep</h3>
+            <h3>Total time asleep</h3>
             <p>
               {DateUtils.subtractDates(
                 this.state.date,
                 this.state.times[1],
-                this.state.times[2]
+                this.state.times[2] - this.state.wakeTime
               )}
+            </p>
+            <h3>Sleep efficiency</h3>
+            <p>
+              {Math.round(
+                (this.state.times[2] -
+                  this.state.times[1] -
+                  this.state.wakeTime) /
+                  (this.state.times[3] - this.state.times[0]) *
+                  100
+              ) + "%"}
             </p>
           </div>
         </div>
