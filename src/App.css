@@ -5,6 +5,11 @@
 	display: block;
 }
 
+.overview {
+	text-align: center;
+	margin: 0px auto;
+}
+
 h1 {
 	margin: 20px;
 }
