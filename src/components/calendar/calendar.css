@@ -1,6 +1,6 @@
 #calendar {
 	width: 600px;
-	margin: 0 auto;
+	margin: 20px auto;
 }
 
 @media (max-width: 770px) {

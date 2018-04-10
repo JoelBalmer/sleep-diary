@@ -1,4 +1,4 @@
-var moment = require("moment");
+const moment = require("moment");
 
 const formatZero = value => {
 	if (value < 10) {

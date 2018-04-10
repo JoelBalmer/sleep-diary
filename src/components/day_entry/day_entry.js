@@ -48,14 +48,7 @@ class DayEntry extends React.Component {
 		return (
 			<div className="row">
 				<div className="diary-entry col-lg-7 col-md-7 col-sm-7 col-xs-7">
-					<h1>
-						{"Enter your sleep for " +
-							this.props.date.getDate() +
-							"/" +
-							this.props.date.getMonth() +
-							"/" +
-							this.props.date.getFullYear()}
-					</h1>
+					<h1>Sleep times</h1>
 
 					{this.state.times.map((item, index) => {
 						return (
@@ -124,6 +117,12 @@ class DayEntry extends React.Component {
 								100
 						) + "%"}
 					</p>
+					<button
+						className="btn btn-dark"
+						onClick={this.props.onDiarySubmit}
+					>
+						Submit Diary
+					</button>
 				</div>
 			</div>
 		);
