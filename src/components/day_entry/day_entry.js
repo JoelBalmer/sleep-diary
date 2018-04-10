@@ -19,10 +19,10 @@ class DayEntry extends React.Component {
 		//converts slider value to minutes
 		const value = event.target.value;
 		const newTimeIndex = event.currentTarget.getAttribute("event-order");
+
+		//copy the state, edit, and reset state
 		let newTimes = this.state.times.map(item => item);
-
 		newTimes[newTimeIndex] = value;
-
 		this.setState({
 			times: newTimes
 		});
