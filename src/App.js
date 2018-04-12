@@ -17,6 +17,7 @@ class App extends Component {
 
     this.handleCalendarClick = this.handleCalendarClick.bind(this);
     this.handleDiarySubmit = this.handleDiarySubmit.bind(this);
+    this.handleDiaryCancel = this.handleDiaryCancel.bind(this);
   }
 
   handleCalendarClick(date, jsEvent, view) {
@@ -27,6 +28,16 @@ class App extends Component {
   }
 
   handleDiarySubmit(event) {
+    //push new diary entry
+    //use this.state.date
+
+    this.setState({
+      view: "Sleep diary",
+      entries: {}
+    });
+  }
+
+  handleDiaryCancel(event) {
     this.setState({
       view: "Sleep diary"
     });
@@ -42,12 +53,16 @@ class App extends Component {
       <div className="App">
         <Navbar title={title} />
         {this.state.view === "Sleep diary" && (
-          <Calendar handleDayClick={this.handleCalendarClick} />
+          <Calendar
+            date={this.state.date}
+            handleDayClick={this.handleCalendarClick}
+          />
         )}
         {this.state.view === "Diary entry: " && (
           <DayEntry
             date={this.state.date}
             onDiarySubmit={this.handleDiarySubmit}
+            onDiaryCancel={this.handleDiaryCancel}
           />
         )}
       </div>

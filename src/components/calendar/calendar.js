@@ -15,7 +15,17 @@ class Calendar extends React.Component {
 			timezone: "local",
 			defaultView: "month",
 			contentHeight: "auto",
-			dayClick: this.props.handleDayClick
+			dayClick: this.props.handleDayClick,
+			events: [
+				{
+					title: "Entry made",
+					allDay: true,
+					start: "2018-04-18T10:00:00",
+					end: "2018-04-18T10:00:00",
+					rendering: "background",
+					backgroundColor: "lightgreen"
+				}
+			]
 		});
 	}
 
