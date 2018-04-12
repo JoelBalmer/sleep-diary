@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
+import DateUtils from "./utils/time.js";
+
 import Calendar from "./components/calendar/calendar.js";
 import Navbar from "./components/navbar/navbar.js";
 import DayEntry from "./components/day_entry/day_entry.js";
-import DateUtils from "./utils/time.js";
-import "bootstrap/dist/css/bootstrap.css";
-import "./App.css";
+
 const moment = require("moment");
 
 class App extends Component {
