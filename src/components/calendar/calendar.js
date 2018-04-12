@@ -20,8 +20,8 @@ class Calendar extends React.Component {
 				{
 					title: "Entry made",
 					allDay: true,
-					start: "2018-04-18T10:00:00",
-					end: "2018-04-18T10:00:00",
+					start: this.props.date,
+					end: this.props.date,
 					rendering: "background",
 					backgroundColor: "lightgreen"
 				}

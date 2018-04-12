@@ -13,6 +13,8 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    //send this.state.entries as calendar prop instead
+
     this.state = {
       view: "Sleep diary"
     };
