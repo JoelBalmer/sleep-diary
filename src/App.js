@@ -16,7 +16,12 @@ class App extends Component {
     //send this.state.entries as calendar prop instead
 
     this.state = {
-      view: "Sleep diary"
+      view: "Sleep diary",
+      entries: [
+        {
+          date: new Date()
+        }
+      ]
     };
 
     this.handleCalendarClick = this.handleCalendarClick.bind(this);
