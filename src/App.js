@@ -21,6 +21,7 @@ class App extends Component {
     this.handleCalendarClick = this.handleCalendarClick.bind(this);
     this.handleDiarySubmit = this.handleDiarySubmit.bind(this);
     this.handleDiaryCancel = this.handleDiaryCancel.bind(this);
+    this.handleDiaryDelete = this.handleDiaryDelete.bind(this);
   }
 
   handleCalendarClick(date, jsEvent, view) {
@@ -46,6 +47,16 @@ class App extends Component {
     });
   }
 
+  handleDiaryDelete(event) {
+    let entries = this.state.entries;
+    entries.splice(entries.indexOf(this.state.date), 1);
+
+    this.setState({
+      view: "Sleep diary",
+      entries: entries
+    });
+  }
+
   render() {
     let title =
       this.state.view === "Sleep diary"
@@ -67,6 +78,7 @@ class App extends Component {
             date={this.state.date}
             onDiarySubmit={this.handleDiarySubmit}
             onDiaryCancel={this.handleDiaryCancel}
+            onDiaryDelete={this.handleDiaryDelete}
           />
         )}
       </div>

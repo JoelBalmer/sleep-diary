@@ -129,6 +129,12 @@ class DayEntry extends React.Component {
 					>
 						Cancel
 					</button>
+					<button
+						className="btn btn-dark"
+						onClick={this.props.onDiaryDelete}
+					>
+						Delete
+					</button>
 				</div>
 			</div>
 		);
