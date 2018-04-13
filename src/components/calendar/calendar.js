@@ -9,19 +9,6 @@ class Calendar extends React.Component {
 		super(props);
 	}
 
-	/*
-	let entries = this.props.entries.map((entry, index) =>{
-		{
-			title: "Entry made",
-			allDay: true,
-			start: entry.date,
-			end: entry.date,
-			rendering: "background",
-			backgroundColor: "lightgreen"
-		}
-	});
-	*/
-
 	componentDidMount() {
 		$("#calendar").fullCalendar({
 			theme: "standard",
@@ -29,16 +16,7 @@ class Calendar extends React.Component {
 			defaultView: "month",
 			contentHeight: "auto",
 			dayClick: this.props.handleDayClick,
-			events: [
-				{
-					title: "Entry made",
-					allDay: true,
-					start: this.props.date,
-					end: this.props.date,
-					rendering: "background",
-					backgroundColor: "lightgreen"
-				}
-			]
+			events: this.props.entries
 		});
 	}
 

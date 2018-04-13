@@ -19,7 +19,12 @@ class App extends Component {
       view: "Sleep diary",
       entries: [
         {
-          date: new Date()
+          title: "Entry made",
+          allDay: true,
+          start: new Date(),
+          end: new Date(),
+          rendering: "background",
+          backgroundColor: "lightgreen"
         }
       ]
     };
@@ -64,6 +69,7 @@ class App extends Component {
         {this.state.view === "Sleep diary" && (
           <Calendar
             date={this.state.date}
+            entries={this.state.entries}
             handleDayClick={this.handleCalendarClick}
           />
         )}
