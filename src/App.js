@@ -15,20 +15,7 @@ class App extends Component {
 
     this.state = {
       view: "Sleep diary",
-<<<<<<< HEAD
       entries: []
-=======
-      entries: [
-        {
-          title: "Entry made",
-          allDay: true,
-          start: new Date(),
-          end: new Date(),
-          rendering: "background",
-          backgroundColor: "lightgreen"
-        }
-      ]
->>>>>>> d4de9ba7f287d3d4b2bdb3c784353d34bf7eba34
     };
 
     this.handleCalendarClick = this.handleCalendarClick.bind(this);
@@ -70,13 +57,9 @@ class App extends Component {
         <Navbar title={title} />
         {this.state.view === "Sleep diary" && (
           <Calendar
-<<<<<<< HEAD
-=======
             date={this.state.date}
             entries={this.state.entries}
->>>>>>> d4de9ba7f287d3d4b2bdb3c784353d34bf7eba34
             handleDayClick={this.handleCalendarClick}
-            entries={this.state.entries}
           />
         )}
         {this.state.view === "Diary entry: " && (
