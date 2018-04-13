@@ -9,36 +9,32 @@ class Calendar extends React.Component {
 		super(props);
 	}
 
-	/*
-	let entries = this.props.entries.map((entry, index) =>{
-		{
-			title: "Entry made",
-			allDay: true,
-			start: entry.date,
-			end: entry.date,
-			rendering: "background",
-			backgroundColor: "lightgreen"
-		}
-	});
-	*/
-
 	componentDidMount() {
+		let entries = [];
+		console.log(this.props.entries);
+		for (
+			let entryIndex = 0;
+			entryIndex < this.props.entries.length;
+			entryIndex++
+		) {
+			let newEntry = {};
+			newEntry.title = "Entry made";
+			newEntry.allDay = true;
+			newEntry.start = this.props.entries[entryIndex];
+			newEntry.end = this.props.entries[entryIndex];
+			newEntry.rendering = "background";
+			console.log(newEntry);
+
+			entries.push(newEntry);
+		}
+
 		$("#calendar").fullCalendar({
 			theme: "standard",
 			timezone: "local",
 			defaultView: "month",
 			contentHeight: "auto",
 			dayClick: this.props.handleDayClick,
-			events: [
-				{
-					title: "Entry made",
-					allDay: true,
-					start: this.props.date,
-					end: this.props.date,
-					rendering: "background",
-					backgroundColor: "lightgreen"
-				}
-			]
+			events: entries
 		});
 	}
 
