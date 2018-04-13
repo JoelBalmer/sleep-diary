@@ -10,6 +10,7 @@ class Calendar extends React.Component {
 	}
 
 	componentDidMount() {
+<<<<<<< HEAD
 		let entries = [];
 		console.log(this.props.entries);
 		for (
@@ -28,13 +29,19 @@ class Calendar extends React.Component {
 			entries.push(newEntry);
 		}
 
+=======
+>>>>>>> d4de9ba7f287d3d4b2bdb3c784353d34bf7eba34
 		$("#calendar").fullCalendar({
 			theme: "standard",
 			timezone: "local",
 			defaultView: "month",
 			contentHeight: "auto",
 			dayClick: this.props.handleDayClick,
+<<<<<<< HEAD
 			events: entries
+=======
+			events: this.props.entries
+>>>>>>> d4de9ba7f287d3d4b2bdb3c784353d34bf7eba34
 		});
 	}
 
