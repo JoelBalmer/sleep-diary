@@ -1,8 +1,8 @@
 import React from "react";
-import "./calendar.css";
 import $ from "jquery";
 import "fullcalendar";
 import "fullcalendar/dist/fullcalendar.css";
+import "./calendar.css";
 
 class Calendar extends React.Component {
 	constructor(props) {

@@ -120,6 +120,7 @@ class DayEntry extends React.Component {
 					<button
 						className="btn btn-dark"
 						onClick={this.props.onDiarySubmit}
+						disabled={this.props.disableSubmit}
 					>
 						Submit Diary
 					</button>

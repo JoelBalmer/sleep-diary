@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-import DateUtils from "./utils/time.js";
-
 import Calendar from "./components/calendar/calendar.js";
 import Navbar from "./components/navbar/navbar.js";
 import DayEntry from "./components/day_entry/day_entry.js";
-
 const moment = require("moment");
 
 class App extends Component {
@@ -23,6 +20,8 @@ class App extends Component {
     this.handleDiaryCancel = this.handleDiaryCancel.bind(this);
     this.handleDiaryDelete = this.handleDiaryDelete.bind(this);
   }
+
+  // -- handlers -- //
 
   handleCalendarClick(date, jsEvent, view) {
     this.setState({
@@ -63,6 +62,8 @@ class App extends Component {
     });
   }
 
+  // -------------------- //
+
   render() {
     let title =
       this.state.view === "Sleep diary"
@@ -82,6 +83,7 @@ class App extends Component {
         {this.state.view === "Diary entry: " && (
           <DayEntry
             date={this.state.date}
+            disableSubmit={!this.state.entries[this.state.date] ? "" : "true"}
             onDiarySubmit={this.handleDiarySubmit}
             onDiaryCancel={this.handleDiaryCancel}
             onDiaryDelete={this.handleDiaryDelete}
