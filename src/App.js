@@ -49,7 +49,13 @@ class App extends Component {
 
   handleDiaryDelete(event) {
     let entries = this.state.entries;
-    entries.splice(entries.indexOf(this.state.date), 1);
+
+    entries.forEach(currentEntry => {
+      if (this.state.date.toString() === currentEntry.toString()) {
+        entries.splice(entries.indexOf(currentEntry), 1);
+        return;
+      }
+    });
 
     this.setState({
       view: "Sleep diary",

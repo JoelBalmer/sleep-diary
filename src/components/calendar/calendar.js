@@ -11,7 +11,6 @@ class Calendar extends React.Component {
 
 	componentDidMount() {
 		let entries = [];
-		console.log(this.props.entries);
 		for (
 			let entryIndex = 0;
 			entryIndex < this.props.entries.length;
