@@ -11,13 +11,30 @@
 	margin: 0px auto;
 }
 
-h3 {
-	font-style: italic;
-	font-size: 20px;
+.key {
+	margin: 10px;
+}
+
+.key > * {
+	display: inline-block;
+	padding: 10px;
+}
+
+.key-color {
+	width: 20px;
+	height: 100%;
+	background: lightgreen;
+	opacity: 0.4;
+	border: black solid;
 }
 
 h1 {
 	margin: 10px;
+}
+
+h3 {
+	font-style: italic;
+	font-size: 20px;
 }
 
 input {

@@ -74,7 +74,7 @@ class App extends Component {
     });
   }
 
-  // -------------------- //
+  // -- end handlers -- //
 
   render() {
     let title =
@@ -85,6 +85,10 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar title={title} />
+        <div className="key">
+          <h2>Click a day to make an entry</h2>
+          <div className="key-color" />
+        </div>
         {this.state.view === "Sleep diary" && (
           <Calendar
             date={this.state.date}
