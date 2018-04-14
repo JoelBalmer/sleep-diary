@@ -32,7 +32,19 @@ class App extends Component {
 
   handleDiarySubmit(event) {
     let entries = this.state.entries;
-    entries.push(this.state.date);
+    let existingEntry = false;
+
+    //check we don't already have an entry
+    entries.forEach(currentEntry => {
+      if (+this.state.date === +currentEntry) {
+        existingEntry = true;
+      }
+    });
+
+    //add entry if not found
+    if (!existingEntry) {
+      entries.push(this.state.date);
+    }
 
     this.setState({
       view: "Sleep diary",
@@ -50,7 +62,7 @@ class App extends Component {
     let entries = this.state.entries;
 
     entries.forEach(currentEntry => {
-      if (this.state.date.toString() === currentEntry.toString()) {
+      if (+this.state.date === +currentEntry) {
         entries.splice(entries.indexOf(currentEntry), 1);
         return;
       }
