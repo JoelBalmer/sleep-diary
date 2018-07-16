@@ -1,58 +1,48 @@
 .App {
-	text-align: center;
-	width: 100%;
-	margin: 0px auto;
-	display: block;
-	padding: 20px;
+  text-align: center;
+  width: 100%;
+  margin: 0px auto;
+  display: block;
+  padding: 20px;
 }
 
 .overview {
-	text-align: center;
-	margin: 0px auto;
+  text-align: center;
+  margin: 0px auto;
 }
 
-.key {
-	margin: 10px;
-}
-
-.key > * {
-	display: inline-block;
-	padding: 10px;
-}
-
-.key-color {
-	width: 20px;
-	height: 100%;
-	background: lightgreen;
-	opacity: 0.4;
-	border: black solid;
+.App > * {
+  padding: 10px;
 }
 
 h1 {
-	margin: 10px;
+  margin: 10px;
 }
 
 h3 {
-	font-style: italic;
-	font-size: 20px;
+  font-style: italic;
+  font-size: 20px;
+}
+
+h4 {
 }
 
 input {
-	width: 80%;
+  width: 80%;
 }
 
 p {
-	margin: 5px;
+  margin: 5px;
 }
 
 hr {
-	display: none;
-	border-top: 1px solid rgba(0, 0, 0, 0.5);
-	width: 90%;
+  display: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  width: 90%;
 }
 
 @media (max-width: 575px) {
-	hr {
-		display: block;
-	}
+  hr {
+    display: block;
+  }
 }

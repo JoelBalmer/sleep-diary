@@ -1,5 +1,17 @@
 .nav-bar {
-	background: black;
-	color: white;
-	padding: 1px;
+  background: black;
+  color: white;
+  padding: 1px 5px 1px 5px;
+  width: 100%;
+  display: flex;
+}
+
+.login {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.login:hover {
+  text-decoration: underline;
+  color: #ffffff;
 }

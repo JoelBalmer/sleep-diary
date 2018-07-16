@@ -82,13 +82,12 @@ class App extends Component {
         ? this.state.view
         : this.state.view + moment(this.state.date).format("DD/MM/YY");
 
+    let helpInfo = this.state.view === "Sleep diary" ? "a day" : "save";
+
     return (
       <div className="App">
         <Navbar title={title} />
-        <div className="key">
-          <h2>Click a day to make an entry</h2>
-          <div className="key-color" />
-        </div>
+        <h4>Click {helpInfo} to make an entry</h4>
         {this.state.view === "Sleep diary" && (
           <Calendar
             date={this.state.date}
