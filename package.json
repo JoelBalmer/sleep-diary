@@ -3,16 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "ajv": "^6.4.0",
-    "bootstrap": "^4.0.0",
+    "ajv": "^6.5.2",
+    "bootstrap": "^4.1.2",
     "fullcalendar": "^3.9.0",
     "jquery": "^3.3.1",
     "jquery-ui": "^1.12.1",
-    "moment": "^2.22.0",
+    "moment": "^2.22.2",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
     "popper.js": "^1.14.3",
-    "react": "^16.3.1",
+    "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.3.1",
+    "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
   },
   "scripts": {
