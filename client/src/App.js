@@ -84,6 +84,10 @@ class App extends Component {
 
     let helpInfo = this.state.view === "Sleep diary" ? "a day" : "save";
 
+    fetch("/entries")
+      .then(res => res.json())
+      .then(entry => console.log(entry));
+
     return (
       <div className="App">
         <Navbar title={title} />
