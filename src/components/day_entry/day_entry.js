@@ -115,19 +115,22 @@ class DayEntry extends React.Component {
                 100
             ) + "%"}
           </p>
-          <button
-            className="btn btn-dark"
-            onClick={this.props.onDiarySubmit}
-            disabled={this.props.disableSubmit}
-          >
-            Submit
-          </button>
-          <button className="btn btn-dark" onClick={this.props.onDiaryCancel}>
-            Cancel
-          </button>
-          <button className="btn btn-dark" onClick={this.props.onDiaryDelete}>
-            Delete
-          </button>
+
+          <div className="action-items">
+            <button
+              className="btn btn-dark"
+              onClick={this.props.onDiarySubmit}
+              disabled={this.props.disableSubmit}
+            >
+              Submit
+            </button>
+            <button className="btn btn-dark" onClick={this.props.onDiaryCancel}>
+              Cancel
+            </button>
+            <button className="btn btn-dark" onClick={this.props.onDiaryDelete}>
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     );
