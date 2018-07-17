@@ -7,8 +7,9 @@ class DayEntry extends React.Component {
     super(props);
 
     this.state = {
-      times: [66, 78, 168, 186],
-      wakeTime: 0
+      //times: [66, 78, 168, 186],
+      times: [10, 20, 70, 80],
+      wakeTime: 20
     };
 
     this.handleOnChange = this.handleOnChange.bind(this);
