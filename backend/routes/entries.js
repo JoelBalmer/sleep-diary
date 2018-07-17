@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const Entry = require("../models/entry");
 
 /* GET entries page. */
 router.get("/", function(req, res, next) {
@@ -17,8 +18,9 @@ router.get("/", function(req, res, next) {
 // @desc    Tests users route
 router.post("/entry", (req, res) => {
   Entry.findOne({ date: req.body.date }).then(entry => {
-    if (entry) console.log("update entry");
-    else {
+    if (entry) {
+      console.log("update entry");
+    } else {
       const newEntry = new Entry({
         uid: req.body.uid,
         date: Date.now(),
