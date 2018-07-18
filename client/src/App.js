@@ -74,7 +74,20 @@ class App extends Component {
     });
   }
 
-  // -- end handlers -- //
+  componentDidMount() {
+    fetch("/entries")
+      .then(res => res.json())
+      .then(entries => {
+        let newEntries = [];
+        entries.forEach(entry => {
+          newEntries.push(new Date(entry.date));
+        });
+        this.setState({
+          view: "Sleep diary",
+          entries: newEntries
+        });
+      });
+  }
 
   render() {
     let title =
@@ -83,10 +96,6 @@ class App extends Component {
         : this.state.view + moment(this.state.date).format("DD/MM/YY");
 
     let helpInfo = this.state.view === "Sleep diary" ? "a day" : "save";
-
-    fetch("/entries")
-      .then(res => res.json())
-      .then(entry => console.log(entry));
 
     return (
       <div className="App">
