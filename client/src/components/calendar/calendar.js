@@ -7,9 +7,11 @@ import "./calendar.css";
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
+
+    this.updateCalendar = this.updateCalendar.bind(this);
   }
 
-  componentDidMount() {
+  updateCalendar() {
     let entries = [];
     for (
       let entryIndex = 0;
@@ -19,20 +21,29 @@ class Calendar extends React.Component {
       let newEntry = {};
       newEntry.title = "Entry made";
       newEntry.allDay = true;
-      newEntry.start = this.props.entries[entryIndex];
-      newEntry.end = this.props.entries[entryIndex];
+      newEntry.start = new Date(this.props.entries[entryIndex]);
+      newEntry.end = new Date(this.props.entries[entryIndex]);
       newEntry.rendering = "background";
       entries.push(newEntry);
     }
 
+    return entries;
+  }
+
+  componentDidMount() {
     $("#calendar").fullCalendar({
       theme: "standard",
       timezone: "local",
       defaultView: "month",
       contentHeight: "auto",
       dayClick: this.props.handleDayClick,
-      events: entries
+      events: this.updateCalendar()
     });
+  }
+
+  componentDidUpdate() {
+    $("#calendar").fullCalendar("removeEvents");
+    $("#calendar").fullCalendar("addEventSource", this.updateCalendar());
   }
 
   render() {
