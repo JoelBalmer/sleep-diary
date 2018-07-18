@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www | npm start --prefix ../client/"
+    "start": "nodemon --inspect ./bin/www | npm start --prefix ../client/"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

@@ -4,13 +4,17 @@ const Entry = require("../models/entry");
 
 /* GET entries page. */
 router.get("/", function(req, res, next) {
-  res.json({
-    date: Date.now(),
-    start_bed: 10,
-    start_sleep: 20,
-    end_sleep: 70,
-    end_bed: 80,
-    awake: 20
+  // res.json({
+  //   date: Date.now(),
+  //   start_bed: 10,
+  //   start_sleep: 20,
+  //   end_sleep: 70,
+  //   end_bed: 80,
+  //   awake: 20
+  // });
+
+  Entry.find({}, (err, entries) => {
+    res.json(entries);
   });
 });
 
