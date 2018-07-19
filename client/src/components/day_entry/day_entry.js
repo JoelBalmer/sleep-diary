@@ -56,6 +56,9 @@ class DayEntry extends React.Component {
 
     return (
       <div className="row">
+        <span hidden name="date">
+          {this.props.date.toString()}
+        </span>
         <div className="diary-entry col-lg-7 col-md-7 col-sm-7 col-xs-7">
           <h1>Sleep times</h1>
 
