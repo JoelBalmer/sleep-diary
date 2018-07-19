@@ -9,11 +9,13 @@ class DayEntry extends React.Component {
     this.state = {
       //times: [66, 78, 168, 186],
       times: [10, 20, 70, 80],
-      wakeTime: 20
+      wakeTime: 20,
+      rating: 5
     };
 
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleWakeChange = this.handleWakeChange.bind(this);
+    this.handleRatingChange = this.handleRatingChange.bind(this);
   }
 
   handleOnChange(event) {
@@ -33,6 +35,12 @@ class DayEntry extends React.Component {
     //convert slider value to minutes
     this.setState({
       wakeTime: event.target.value
+    });
+  }
+
+  handleRatingChange(event) {
+    this.setState({
+      rating: event.target.value
     });
   }
 
@@ -63,6 +71,7 @@ class DayEntry extends React.Component {
                 </p>
                 <input
                   className={"slider slider-" + index}
+                  name={sliderTexts[index]}
                   type="range"
                   min="0"
                   max="288"
@@ -86,10 +95,24 @@ class DayEntry extends React.Component {
             defaultValue="0"
             onChange={this.handleWakeChange}
           />
+          <h3>Enter any notes you have about your sleep</h3>
+          <textarea className="notes" name="notes" cols="40" rows="5" />
         </div>
+
         <div className="overview col-lg-5 col-md-5 col-sm-5 col-xs-5">
           <hr />
           <h1>Overview</h1>
+          <h3>How would you rate your sleep?</h3>
+          <p>{this.state.rating + "/10"}</p>
+          <input
+            className="rating"
+            name="rating"
+            type="range"
+            min="0"
+            max="10"
+            defaultValue="5"
+            onChange={this.handleRatingChange}
+          />
           <h3>Total time in bed</h3>
           <p>
             {DateUtils.subtractDates(
