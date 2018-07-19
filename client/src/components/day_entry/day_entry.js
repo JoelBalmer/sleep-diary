@@ -10,12 +10,14 @@ class DayEntry extends React.Component {
       //times: [66, 78, 168, 186],
       times: [10, 20, 70, 80],
       wakeTime: 20,
-      rating: 5
+      rating: 5,
+      notes: ""
     };
 
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleWakeChange = this.handleWakeChange.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
+    this.handleNotesChange = this.handleNotesChange.bind(this);
   }
 
   handleOnChange(event) {
@@ -35,6 +37,12 @@ class DayEntry extends React.Component {
     //convert slider value to minutes
     this.setState({
       wakeTime: event.target.value
+    });
+  }
+
+  handleNotesChange(event) {
+    this.setState({
+      notes: event.target.value
     });
   }
 
@@ -99,7 +107,13 @@ class DayEntry extends React.Component {
             onChange={this.handleWakeChange}
           />
           <h3>Enter any notes you have about your sleep</h3>
-          <textarea className="notes" name="notes" cols="40" rows="5" />
+          <textarea
+            className="notes"
+            name="notes"
+            cols="40"
+            rows="5"
+            onChange={this.handleNotesChange}
+          />
         </div>
 
         <div className="overview col-lg-5 col-md-5 col-sm-5 col-xs-5">

@@ -18,6 +18,10 @@ router.get("/", function(req, res, next) {
   });
 });
 
+router.post("/test", function(req, res, next) {
+  console.log(req.body);
+});
+
 // @route   POST api/users/test
 // @desc    Tests users route
 router.post("/entry", (req, res) => {
