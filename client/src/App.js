@@ -50,12 +50,16 @@ class App extends Component {
       view: "Sleep diary",
       entries: entries
     });
+
+    console.log("calling from the parent");
   }
 
   handleDiaryCancel(event) {
     this.setState({
       view: "Sleep diary"
     });
+
+    fetch("/entries/test", { method: "POST" });
   }
 
   handleDiaryDelete(event) {

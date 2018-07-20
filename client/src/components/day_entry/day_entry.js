@@ -14,10 +14,17 @@ class DayEntry extends React.Component {
       notes: ""
     };
 
+    this.onSubmit = this.onSubmit.bind(this);
+
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleWakeChange = this.handleWakeChange.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
     this.handleNotesChange = this.handleNotesChange.bind(this);
+  }
+
+  onSubmit(event) {
+    console.log("calling from the child");
+    this.props.onDiarySubmit(event);
   }
 
   handleOnChange(event) {
@@ -160,7 +167,7 @@ class DayEntry extends React.Component {
           <div className="action-items">
             <button
               className="btn btn-dark"
-              onClick={this.props.onDiarySubmit}
+              onClick={this.onSubmit}
               disabled={this.props.disableSubmit}
             >
               Submit
