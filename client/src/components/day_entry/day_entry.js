@@ -23,13 +23,25 @@ class DayEntry extends React.Component {
   }
 
   onSubmit(event) {
-    console.log("calling from the child");
-    console.log(event);
+    //create payload
+    var details = {
+      date: document.getElementsByName("date")[0].innerHTML,
+      notes: document.getElementsByName("notes")[0].value
+    };
+
+    const formBody = Object.keys(details)
+      .map(
+        key => encodeURIComponent(key) + "=" + encodeURIComponent(details[key])
+      )
+      .join("&");
+
     fetch("/entries/test", {
       method: "POST",
+      method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
-      }
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+      },
+      body: formBody
     });
     this.props.onDiarySubmit(event);
   }
