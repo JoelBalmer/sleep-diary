@@ -9,7 +9,7 @@ class DayEntry extends React.Component {
     this.state = {
       //times: [66, 78, 168, 186],
       times: [10, 20, 70, 80],
-      wakeTime: 20,
+      wakeTime: 0,
       rating: 5,
       notes: ""
     };
@@ -25,18 +25,22 @@ class DayEntry extends React.Component {
   onSubmit(event) {
     //create payload
     var details = {
+      uid: 10155988094031140,
       date: document.getElementsByName("date")[0].innerHTML,
-      notes: document.getElementsByName("notes")[0].value
+      start_bed: document.getElementsByName("got into bed")[0].value,
+      start_sleep: document.getElementsByName("fell asleep")[0].value,
+      end_sleep: document.getElementsByName("woke up")[0].value,
+      end_bed: document.getElementsByName("got out of bed")[0].value,
+      awake: document.getElementsByName("awake")[0].value,
+      description: document.getElementsByName("notes")[0].value,
+      rating: document.getElementsByName("rating")[0].value
     };
-
     const formBody = Object.keys(details)
       .map(
         key => encodeURIComponent(key) + "=" + encodeURIComponent(details[key])
       )
       .join("&");
-
     fetch("/entries/test", {
-      method: "POST",
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
@@ -126,6 +130,7 @@ class DayEntry extends React.Component {
           </p>
           <input
             className="wake-time-slider"
+            name="awake"
             type="range"
             min="0"
             max="288"

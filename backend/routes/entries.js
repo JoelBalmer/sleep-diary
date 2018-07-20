@@ -2,21 +2,16 @@ const express = require("express");
 const router = express.Router();
 const Entry = require("../models/entry");
 
-/* GET entries page. */
+// @route   GET entries/
+// @desc    Returns the diary entries
 router.get("/", function(req, res, next) {
-  // res.json({
-  //   date: Date.now(),
-  //   start_bed: 10,
-  //   start_sleep: 20,
-  //   end_sleep: 70,
-  //   end_bed: 80,
-  //   awake: 20
-  // });
   Entry.find({}, (err, entries) => {
     res.json(entries);
   });
 });
 
+// @route   GET entries/
+// @desc    Returns the diary entries
 router.post("/test", function(req, res, next) {
   console.log(req.body);
 });
