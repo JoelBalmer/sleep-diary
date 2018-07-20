@@ -21,8 +21,6 @@ class App extends Component {
     this.handleDiaryDelete = this.handleDiaryDelete.bind(this);
   }
 
-  // -- handlers -- //
-
   handleCalendarClick(date, jsEvent, view) {
     this.setState({
       date: new Date(moment(date).add(16, "h")),
@@ -50,16 +48,12 @@ class App extends Component {
       view: "Sleep diary",
       entries: entries
     });
-
-    console.log("calling from the parent");
   }
 
   handleDiaryCancel(event) {
     this.setState({
       view: "Sleep diary"
     });
-
-    fetch("/entries/test", { method: "POST" });
   }
 
   handleDiaryDelete(event) {
