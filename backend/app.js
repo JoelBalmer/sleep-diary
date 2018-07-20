@@ -7,8 +7,13 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const entriesRouter = require("./routes/entries");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 const app = express();
+
+// Body parser middlewar
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(logger("dev"));
 app.use(express.json());

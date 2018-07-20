@@ -24,6 +24,13 @@ class DayEntry extends React.Component {
 
   onSubmit(event) {
     console.log("calling from the child");
+    console.log(event);
+    fetch("/entries/test", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+      }
+    });
     this.props.onDiarySubmit(event);
   }
 

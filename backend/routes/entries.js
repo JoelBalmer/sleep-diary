@@ -12,7 +12,6 @@ router.get("/", function(req, res, next) {
   //   end_bed: 80,
   //   awake: 20
   // });
-
   Entry.find({}, (err, entries) => {
     res.json(entries);
   });
