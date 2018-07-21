@@ -57,7 +57,7 @@ app.use(function(err, req, res, next) {
 });
 
 // DB Config
-const db = require("./config/keys").mongoURI;
+const db = process.env.MONGODB_URI || require("./config/keys").mongoURI;
 
 // Connect to MongoDB
 mongoose

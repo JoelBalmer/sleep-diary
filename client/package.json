@@ -1,6 +1,9 @@
 {
   "name": "sleep-diary",
   "version": "0.1.0",
+  "engines": {
+    "node": "8.9.4"
+  },
   "private": true,
   "dependencies": {
     "ajv": "^6.5.2",

@@ -1,6 +1,9 @@
 {
   "name": "backend",
   "version": "0.0.0",
+  "engines": {
+    "node": "8.9.4"
+  },
   "private": true,
   "scripts": {
     "start": "nodemon --inspect ./bin/www | npm start --prefix ../client/"
