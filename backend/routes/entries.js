@@ -10,12 +10,16 @@ router.get("/", function(req, res, next) {
   });
 });
 
-// @route   GET entries/
-// @desc    Returns the diary entries
-router.post("/test", function(req, res, next) {
-  console.log(req.body);
+// @route   GET entries/entry
+// @desc    Returns a diary entry
+router.get("/entry/:date", function(req, res, next) {
+  Entry.findOne({ date: req.params.date }).then(entry => {
+    res.json(entry);
+  });
 });
 
+// @route   DELETE entries/entry
+// @desc    Deletes a diary entry
 router.delete("/entry", (req, res) => {
   Entry.findOne({ date: req.body.date }).then(entry => {
     entry

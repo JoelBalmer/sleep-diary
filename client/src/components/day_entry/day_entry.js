@@ -108,8 +108,29 @@ class DayEntry extends React.Component {
     });
   }
 
+  componentDidMount() {
+    const url =
+      "/entries/entry/" + encodeURIComponent(this.props.date.toString());
+
+    fetch(url)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return res.json().then(err => {
+            throw Error(err);
+          });
+        }
+      })
+      .then(json => {
+        console.log(json);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
-    //create array for less repeated code
     const sliderTexts = [
       "got into bed",
       "fell asleep",
