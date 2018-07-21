@@ -6,9 +6,15 @@ class DayEntry extends React.Component {
   constructor(props) {
     super(props);
 
+    this.sliderTexts = [
+      "got into bed",
+      "fell asleep",
+      "woke up",
+      "got out of bed"
+    ];
+
     this.state = {
-      //times: [66, 78, 168, 186],
-      times: [10, 20, 70, 80],
+      times: [66, 78, 168, 186],
       wakeTime: 0,
       rating: 5,
       notes: ""
@@ -122,23 +128,37 @@ class DayEntry extends React.Component {
           });
         }
       })
-      .then(json => {
-        console.log(json);
+      .then(entry => {
+        if (!entry) return;
+
+        // Set entry values
+        let newState = this.state;
+
+        newState.times[0] = entry.start_bed;
+        newState.times[1] = entry.start_sleep;
+        newState.times[2] = entry.end_sleep;
+        newState.times[3] = entry.end_bed;
+        newState.wakeTime = entry.awake;
+        newState.notes = entry.description;
+        newState.rating = entry.rating;
+
+        this.setState(newState);
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  render() {
-    const sliderTexts = [
-      "got into bed",
-      "fell asleep",
-      "woke up",
-      "got out of bed",
-      "were awake for in the night"
-    ];
+  componentDidUpdate() {
+    this.sliderTexts.forEach((sliderText, index) => {
+      document.getElementsByName(sliderText)[0].value = this.state.times[index];
+    });
+    document.getElementsByName("awake")[0].value = this.state.wakeTime;
+    document.getElementsByName("rating")[0].value = this.state.rating;
+    document.getElementsByName("notes")[0].value = this.state.notes;
+  }
 
+  render() {
     return (
       <div className="row">
         <span hidden name="date">
@@ -153,7 +173,7 @@ class DayEntry extends React.Component {
           {this.state.times.map((item, index) => {
             return (
               <div>
-                <h3>{"Enter the time you " + sliderTexts[index]}</h3>
+                <h3>{"Enter the time you " + this.sliderTexts[index]}</h3>
                 <p className={"timeLabel timeLabel-" + index}>
                   {DateUtils.getNewHours(
                     this.props.date,
@@ -162,11 +182,11 @@ class DayEntry extends React.Component {
                 </p>
                 <input
                   className={"slider slider-" + index}
-                  name={sliderTexts[index]}
+                  name={this.sliderTexts[index]}
                   type="range"
                   min="0"
                   max="288"
-                  defaultValue={this.state.times[index]}
+                  value={this.state.times[index]}
                   onChange={this.handleOnChange}
                   event-order={index}
                 />
@@ -174,7 +194,7 @@ class DayEntry extends React.Component {
             );
           })}
 
-          <h3>{"Enter the time you " + sliderTexts[4]}</h3>
+          <h3>Enter the time you were awake for in the night</h3>
           <p className="wake-time-label">
             {DateUtils.formatWakeTime(this.state.wakeTime * 5)}
           </p>
