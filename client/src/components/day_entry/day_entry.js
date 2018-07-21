@@ -15,6 +15,7 @@ class DayEntry extends React.Component {
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.onDelete = this.onDelete.bind(this);
 
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleWakeChange = this.handleWakeChange.bind(this);
@@ -22,9 +23,31 @@ class DayEntry extends React.Component {
     this.handleNotesChange = this.handleNotesChange.bind(this);
   }
 
+  onDelete(event) {
+    var payload = {
+      date: new Date(document.getElementsByName("date")[0].innerHTML)
+    };
+
+    const formBody = Object.keys(payload)
+      .map(
+        key => encodeURIComponent(key) + "=" + encodeURIComponent(payload[key])
+      )
+      .join("&");
+
+    fetch("/entries/entry", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+      },
+      body: formBody
+    });
+
+    this.props.onDiaryDelete(event);
+  }
+
   onSubmit(event) {
     //create payload
-    var details = {
+    var payload = {
       uid: Number(document.getElementsByName("uid")[0].innerHTML),
       date: new Date(document.getElementsByName("date")[0].innerHTML),
       start_bed: document.getElementsByName("got into bed")[0].value,
@@ -36,11 +59,12 @@ class DayEntry extends React.Component {
       rating: document.getElementsByName("rating")[0].value
     };
 
-    const formBody = Object.keys(details)
+    const formBody = Object.keys(payload)
       .map(
-        key => encodeURIComponent(key) + "=" + encodeURIComponent(details[key])
+        key => encodeURIComponent(key) + "=" + encodeURIComponent(payload[key])
       )
       .join("&");
+
     fetch("/entries/entry", {
       method: "POST",
       headers: {
@@ -204,7 +228,7 @@ class DayEntry extends React.Component {
             <button className="btn btn-dark" onClick={this.props.onDiaryCancel}>
               Cancel
             </button>
-            <button className="btn btn-dark" onClick={this.props.onDiaryDelete}>
+            <button className="btn btn-dark" onClick={this.onDelete}>
               Delete
             </button>
           </div>

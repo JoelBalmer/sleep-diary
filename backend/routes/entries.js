@@ -16,6 +16,15 @@ router.post("/test", function(req, res, next) {
   console.log(req.body);
 });
 
+router.delete("/entry", (req, res) => {
+  Entry.findOne({ date: req.body.date }).then(entry => {
+    entry
+      .remove()
+      .then(savedEntry => res.send(`Removed entry for: ${req.body.date}`))
+      .catch(err => console.log(`Here's the error: ${err}`));
+  });
+});
+
 // @route   POST api/users/test
 // @desc    Tests users route
 router.post("/entry", (req, res) => {
