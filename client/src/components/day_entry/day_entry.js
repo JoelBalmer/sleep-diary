@@ -25,8 +25,8 @@ class DayEntry extends React.Component {
   onSubmit(event) {
     //create payload
     var details = {
-      uid: 10155988094031140,
-      date: document.getElementsByName("date")[0].innerHTML,
+      uid: Number(document.getElementsByName("uid")[0].innerHTML),
+      date: new Date(document.getElementsByName("date")[0].innerHTML),
       start_bed: document.getElementsByName("got into bed")[0].value,
       start_sleep: document.getElementsByName("fell asleep")[0].value,
       end_sleep: document.getElementsByName("woke up")[0].value,
@@ -35,18 +35,20 @@ class DayEntry extends React.Component {
       description: document.getElementsByName("notes")[0].value,
       rating: document.getElementsByName("rating")[0].value
     };
+
     const formBody = Object.keys(details)
       .map(
         key => encodeURIComponent(key) + "=" + encodeURIComponent(details[key])
       )
       .join("&");
-    fetch("/entries/test", {
+    fetch("/entries/entry", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
       },
       body: formBody
     });
+
     this.props.onDiarySubmit(event);
   }
 
@@ -96,6 +98,9 @@ class DayEntry extends React.Component {
       <div className="row">
         <span hidden name="date">
           {this.props.date.toString()}
+        </span>
+        <span hidden name="uid">
+          {"10155988094031140"}
         </span>
         <div className="diary-entry col-lg-7 col-md-7 col-sm-7 col-xs-7">
           <h1>Sleep times</h1>

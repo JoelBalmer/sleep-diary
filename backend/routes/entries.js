@@ -25,7 +25,7 @@ router.post("/entry", (req, res) => {
     } else {
       const newEntry = new Entry({
         uid: req.body.uid,
-        date: Date.now(),
+        date: req.body.date,
         start_bed: req.body.start_bed,
         start_sleep: req.body.start_sleep,
         end_sleep: req.body.end_sleep,
@@ -38,7 +38,7 @@ router.post("/entry", (req, res) => {
       newEntry
         .save()
         .then(entry => res.json(entry))
-        .catch(err => console.log(err));
+        .catch(err => console.log(`Here's the error: ${err}`));
     }
   });
 });
