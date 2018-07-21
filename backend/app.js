@@ -8,6 +8,8 @@ const usersRouter = require("./routes/users");
 const entriesRouter = require("./routes/entries");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+var compression = require("compression");
+var helmet = require("helmet");
 
 const app = express();
 
@@ -17,6 +19,12 @@ app.all("/", function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
 });
+
+// Enable gzip/deflate compression for all routes and responses
+app.use(compression());
+
+// Use Helmet to protect against well known vulnerabilities
+app.use(helmet());
 
 // Body parser middlewar
 app.use(bodyParser.urlencoded({ extended: false }));
