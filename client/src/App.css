@@ -41,8 +41,27 @@ hr {
   width: 90%;
 }
 
+@media (max-width: 768px) {
+  h2 {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+}
+
 @media (max-width: 575px) {
   hr {
     display: block;
+  }
+
+  h2 {
+    font-size: 12px;
+    margin: 0px;
+  }
+
+  h1 {
+    font-size: 22px;
   }
 }

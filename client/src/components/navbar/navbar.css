@@ -6,7 +6,7 @@
 }
 
 .logo {
-  width: 20%;
+  width: 30%;
 }
 
 .logo-link {
@@ -14,8 +14,12 @@
 }
 
 .title {
-  width: 60%;
+  width: 40%;
   margin: auto 0px;
+}
+
+.login {
+  width: 30%;
 }
 
 .login-link {
@@ -24,11 +28,7 @@
   text-align: right;
 }
 
-.login {
-  width: 20%;
-}
-
-.login:hover {
+.login-link:hover {
   text-decoration: underline;
   color: #ffffff;
 }
