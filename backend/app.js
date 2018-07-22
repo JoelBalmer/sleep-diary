@@ -10,7 +10,10 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 var compression = require("compression");
 var helmet = require("helmet");
+var passport = require("passport");
+var FacebookStrategy = require("passport-facebook").Strategy;
 
+// Start express backend
 const app = express();
 
 // Enable CORS
@@ -39,6 +42,43 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/entries", entriesRouter);
+
+// facebook auth 2
+var FACEBOOK_APP_ID = require("./config/keys").FACEBOOK_APP_ID;
+var FACEBOOK_APP_SECRET = require("./config/keys").FACEBOOK_APP_SECRET;
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: FACEBOOK_APP_ID,
+      clientSecret: FACEBOOK_APP_SECRET,
+      callbackURL: "https://localhost:3001/auth/facebook/callback"
+    },
+    function(accessToken, refreshToken, profile, done) {
+      username = profile.displayName;
+      userId = profile.id;
+
+      // for user details to be public
+      module.exports.userId = userId;
+      done(null);
+    }
+  )
+);
+
+app.get("/auth/facebook", passport.authenticate("facebook"));
+app.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", {
+    successRedirect: "/",
+    failureRedirect: "/login"
+  })
+);
+
+// facbeook login error
+const loginError = (req, res, next) => {
+  console.log(`There was a facebook login error`);
+  res.redirect("http://localhost:5000/");
+};
+app.use("/login", loginError);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

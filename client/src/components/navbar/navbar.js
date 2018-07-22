@@ -4,6 +4,15 @@ import React from "react";
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
+
+    this.facebookLogin = this.facebookLogin.bind(this);
+  }
+
+  facebookLogin() {
+    console.log("hello");
+    fetch("auth/facebook", {
+      method: "GET"
+    });
   }
 
   render() {
@@ -16,8 +25,8 @@ class Navbar extends React.Component {
         </div>
         <h1 className="title nav navbar-nav mx-auto">{this.props.title}</h1>
         <div className="login nav navbar-nav pull-sm-right">
-          <a className="login-link" href="http://localhost:3000/">
-            <h2 className="">Hello, Constantine!</h2>
+          <a className="login-link" onClick={this.facebookLogin}>
+            <h2>Login</h2>
           </a>
         </div>
       </div>
