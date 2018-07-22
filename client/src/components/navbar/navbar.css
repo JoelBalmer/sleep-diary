@@ -1,14 +1,31 @@
 .nav-bar {
   background: black;
   color: white;
-  padding: 1px 5px 1px 5px;
   width: 100%;
   display: flex;
 }
 
-.login {
+.logo {
+  width: 20%;
+}
+
+.logo-link {
+  width: 64px;
+}
+
+.title {
+  width: 60%;
+  margin: auto 0px;
+}
+
+.login-link {
   text-decoration: none;
   color: #ffffff;
+  text-align: right;
+}
+
+.login {
+  width: 20%;
 }
 
 .login:hover {
