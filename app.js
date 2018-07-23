@@ -16,7 +16,7 @@ var FacebookStrategy = require("passport-facebook").Strategy;
 var app = express();
 var port = process.env.PORT || 3001;
 var server = app.listen(port);
-app.use(express.static("./client/public"));
+app.use("public", express.static(path.join(__dirname, "./client/build")));
 
 // Enable CORS
 app.all("/", function(req, res, next) {
