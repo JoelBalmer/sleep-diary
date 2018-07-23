@@ -14,7 +14,12 @@ var passport = require("passport");
 var FacebookStrategy = require("passport-facebook").Strategy;
 
 // Start express backend
-const app = express();
+
+//SERVER SETUP
+var app = express();
+var port = process.env.PORT || 3001;
+var server = app.listen(port);
+app.use(express.static("./client/public"));
 
 // Enable CORS
 app.all("/", function(req, res, next) {
