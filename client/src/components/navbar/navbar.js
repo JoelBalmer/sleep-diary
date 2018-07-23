@@ -16,7 +16,7 @@ class Navbar extends React.Component {
     return (
       <div className="navbar nav-bar">
         <div className="logo nav navbar-nav pull-sm-left">
-          <a className="logo-link" href="http://localhost:3000/">
+          <a className="logo-link" href={document.location.href}>
             <img src="./img/logo.png" />
           </a>
         </div>
