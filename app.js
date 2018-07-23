@@ -42,7 +42,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static("./client/public"));
+// app.use(express.static("./client/public"));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
@@ -81,7 +81,7 @@ app.get(
 // facbeook login error
 const loginError = (req, res, next) => {
   console.log(`There was a facebook login error`);
-  res.redirect("http://localhost:5000/");
+  res.redirect("http://localhost:3000/");
 };
 app.use("/login", loginError);
 
