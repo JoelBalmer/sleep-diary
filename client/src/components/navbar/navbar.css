@@ -20,15 +20,11 @@
 
 .login {
   width: 30%;
-}
-
-.login-link {
-  text-decoration: none;
-  color: #ffffff;
   text-align: right;
 }
 
-.login-link:hover {
+.login:hover {
   text-decoration: underline;
   color: #ffffff;
+  cursor: pointer;
 }
