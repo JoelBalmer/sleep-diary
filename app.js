@@ -5,6 +5,7 @@ const logger = require("morgan");
 const entriesRouter = require("./routes/entries");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const path = require("path");
 var compression = require("compression");
 var helmet = require("helmet");
 var passport = require("passport");
