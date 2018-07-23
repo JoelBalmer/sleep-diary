@@ -8,8 +8,8 @@ var app = require("../app");
 var debug = require("debug")("backend:server");
 var http = require("http");
 
-var pug = require("pug");
-app.set("view engine", "pug");
+// var pug = require("pug");
+// app.set("view engine", "pug");
 
 /**
  * Get port from environment and store in Express.
