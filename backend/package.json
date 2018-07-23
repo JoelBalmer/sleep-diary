@@ -6,7 +6,8 @@
   },
   "private": true,
   "scripts": {
-    "start": "nodemon --inspect ./bin/www | npm start --prefix ../client/"
+    "start": "node ./bin/www",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "compression": "^1.7.3",
