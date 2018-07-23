@@ -5,7 +5,7 @@ const logger = require("morgan");
 const entriesRouter = require("./routes/entries");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const path = require("path");
+var path = require("path");
 var compression = require("compression");
 var helmet = require("helmet");
 var passport = require("passport");
@@ -16,8 +16,15 @@ var FacebookStrategy = require("passport-facebook").Strategy;
 //SERVER SETUP
 var app = express();
 var port = process.env.PORT || 3001;
-var server = app.listen(port);
-app.use("public", express.static(path.join(__dirname, "./client/build")));
+
+// https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment
+// Took advice from docs
+app.use(express.static(path.join(__dirname, "client", "build")));
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
 
 // Enable CORS
 app.all("/", function(req, res, next) {
