@@ -17,7 +17,6 @@ var FacebookStrategy = require("passport-facebook").Strategy;
 var app = express();
 var port = process.env.PORT || 3001;
 
-// https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment
 // Took advice from docs
 app.use(express.static(path.join(__dirname, "client", "build")));
 app.get("/", function(req, res) {
@@ -68,7 +67,6 @@ passport.use(
       console.log(profile.id);
 
       // for user details to be public
-      module.exports.userId = userId;
       done(null);
     }
   )
