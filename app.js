@@ -77,7 +77,7 @@ app.get(
   "/auth/facebook/callback",
   passport.authenticate("facebook", {
     successRedirect: "/",
-    failureRedirect: "/login-error"
+    failureRedirect: "/login"
   })
 );
 
@@ -86,7 +86,7 @@ const loginError = (err, req, res, next) => {
   console.log(`There was a facebook login error: ${err}`);
   res.redirect("https://sleep-diary-app.herokuapp.com/");
 };
-app.use("/login-error", loginError);
+app.use("/login", loginError);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
