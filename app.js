@@ -60,7 +60,6 @@ passport.use(
         "https://sleep-diary-app.herokuapp.com/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
-      alert(profile.displayName);
       console.log(profile.displayName);
       return done(null);
     }
