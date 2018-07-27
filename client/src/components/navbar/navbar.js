@@ -22,8 +22,11 @@ class Navbar extends React.Component {
         </div>
         <h1 className="title nav navbar-nav mx-auto">{this.props.title}</h1>
         <div className="login nav navbar-nav pull-sm-right">
-          <a className="login-link" onClick={this.export}>
-            <h2>Export</h2>
+          {/* <a className="login-link" onClick={this.export}>
+            <h2>Login</h2>
+          </a> */}
+          <a className="login-link" href="/auth/facebook">
+            <h2>Login</h2>
           </a>
         </div>
       </div>

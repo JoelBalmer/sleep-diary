@@ -59,20 +59,21 @@ passport.use(
     {
       clientID: FACEBOOK_APP_ID,
       clientSecret: FACEBOOK_APP_SECRET,
-      callbackURL: "https://localhost:3001/auth/facebook/callback"
+      callbackURL:
+        "https://sleep-diary-app.herokuapp.com/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
-      username = profile.displayName;
-      userId = profile.id;
-
-      // for user details to be public
-      module.exports.userId = userId;
-      done(null);
+      alert(profile.displayName);
+      console.log(profile.displayName);
+      return done(null);
     }
   )
 );
 
+// route for facebook authentication and login
 app.get("/auth/facebook", passport.authenticate("facebook"));
+
+// handle the callback after facebook has authenticated the user
 app.get(
   "/auth/facebook/callback",
   passport.authenticate("facebook", {
@@ -84,7 +85,7 @@ app.get(
 // facbeook login error
 const loginError = (req, res, next) => {
   console.log(`There was a facebook login error`);
-  res.redirect("http://localhost:3000/");
+  res.redirect("https://sleep-diary-app.herokuapp.com/");
 };
 app.use("/login", loginError);
 
