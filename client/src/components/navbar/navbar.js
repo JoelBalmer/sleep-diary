@@ -5,11 +5,11 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.export = this.export.bind(this);
+    this.login = this.login.bind(this);
   }
 
-  export() {
-    alert("Export entries as a CSV file - coming soon!");
+  login() {
+    document.location.href = "/auth/facebook";
   }
 
   render() {
@@ -22,10 +22,7 @@ class Navbar extends React.Component {
         </div>
         <h1 className="title nav navbar-nav mx-auto">{this.props.title}</h1>
         <div className="login nav navbar-nav pull-sm-right">
-          {/* <a className="login-link" onClick={this.export}>
-            <h2>Login</h2>
-          </a> */}
-          <a className="login-link" href="/auth/facebook">
+          <a className="login-link" onClick={this.login}>
             <h2>Login</h2>
           </a>
         </div>

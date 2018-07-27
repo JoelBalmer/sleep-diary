@@ -11,8 +11,6 @@ var helmet = require("helmet");
 var passport = require("passport");
 var FacebookStrategy = require("passport-facebook").Strategy;
 
-// Start express backend
-
 //SERVER SETUP
 var app = express();
 var port = process.env.PORT || 3001;
