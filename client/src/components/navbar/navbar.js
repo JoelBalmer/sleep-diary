@@ -1,6 +1,6 @@
 import "./navbar.css";
 import React from "react";
-var userInfo = require("./config/user_info");
+var userInfo = require("../../user_info");
 
 class Navbar extends React.Component {
   constructor(props) {

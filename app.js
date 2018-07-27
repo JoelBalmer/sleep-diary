@@ -10,7 +10,7 @@ var compression = require("compression");
 var helmet = require("helmet");
 var passport = require("passport");
 var FacebookStrategy = require("passport-facebook").Strategy;
-var userInfo = require("./config/user_info");
+var userInfo = require("./client/src/user_info");
 
 //SERVER SETUP
 var app = express();
