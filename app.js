@@ -10,6 +10,7 @@ var compression = require("compression");
 var helmet = require("helmet");
 var passport = require("passport");
 var FacebookStrategy = require("passport-facebook").Strategy;
+var userInfo = require("./config/user_info");
 
 //SERVER SETUP
 var app = express();
@@ -60,7 +61,9 @@ passport.use(
         "https://sleep-diary-app.herokuapp.com/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
-      console.log(profile.displayName);
+      userInfo.nameText = "Hello, " + profile.name.givenName + "!";
+      userInfo.userId = profile.id;
+
       return done(null);
     }
   )

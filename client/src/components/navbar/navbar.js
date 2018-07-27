@@ -1,9 +1,14 @@
 import "./navbar.css";
 import React from "react";
+var userInfo = require("./config/user_info");
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      nameText: userInfo.nameText
+    };
 
     this.login = this.login.bind(this);
   }
@@ -23,7 +28,7 @@ class Navbar extends React.Component {
         <h1 className="title nav navbar-nav mx-auto">{this.props.title}</h1>
         <div className="login nav navbar-nav pull-sm-right">
           <a className="login-link" onClick={this.login}>
-            <h2>Login</h2>
+            <h2>{this.state.nameText}</h2>
           </a>
         </div>
       </div>
