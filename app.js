@@ -11,11 +11,15 @@ var helmet = require("helmet");
 var passport = require("passport");
 var FacebookStrategy = require("passport-facebook").Strategy;
 
+<<<<<<< HEAD
+=======
+let userId = "";
+
+>>>>>>> 00666ae1ff41b39258091b9b5f5e9d9794f9c533
 //SERVER SETUP
 var app = express();
 var port = process.env.PORT || 3001;
 
-// https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment
 // Took advice from docs
 app.use(express.static(path.join(__dirname, "client", "build")));
 app.get("/", function(req, res) {
@@ -61,9 +65,21 @@ passport.use(
         "https://sleep-diary-app.herokuapp.com/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
+<<<<<<< HEAD
       alert(profile.displayName);
       console.log(profile.displayName);
       return done(null);
+=======
+      console.log("Logging facebook info");
+      console.log(profile.displayName);
+      console.log(profile.id);
+
+      // for user details to be public
+      userId = profile.id;
+
+      module.exports.userId = userId;
+      done(null);
+>>>>>>> 00666ae1ff41b39258091b9b5f5e9d9794f9c533
     }
   )
 );
@@ -81,11 +97,28 @@ app.get(
 );
 
 // facbeook login error
+<<<<<<< HEAD
 const loginError = (req, res, next) => {
   console.log(`There was a facebook login error`);
+=======
+const loginError = (err, req, res, next) => {
+  console.log(`There was a facebook login error: ${err}`);
+>>>>>>> 00666ae1ff41b39258091b9b5f5e9d9794f9c533
   res.redirect("https://sleep-diary-app.herokuapp.com/");
 };
-app.use("/login", loginError);
+app.get("/login", loginError);
+
+// error handling
+const errorHandler = (err, req, res, next) => {
+  if (!err.status) {
+    err.status = 500;
+  }
+
+  res.status(err.status).send(err.message);
+  next(err);
+};
+
+app.use(errorHandler);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
