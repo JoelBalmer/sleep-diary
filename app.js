@@ -62,7 +62,7 @@ passport.use(
     },
     function(accessToken, refreshToken, profile, done) {
       console.log(userInfo.nameText);
-      console.log(profile.givenName);
+      console.log(profile);
       userInfo.nameText = "Hello, " + profile.name.givenName + "!";
       userInfo.userId = profile.id;
       console.log(userInfo.nameText);
