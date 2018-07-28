@@ -61,8 +61,12 @@ passport.use(
         "https://sleep-diary-app.herokuapp.com/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
+      console.log(userInfo.nameText);
+      console.log(profile.givenName);
       userInfo.nameText = "Hello, " + profile.name.givenName + "!";
       userInfo.userId = profile.id;
+      console.log(userInfo.nameText);
+      console.log("Finished facebook logging");
 
       return done(null);
     }
