@@ -62,8 +62,12 @@ passport.use(
     },
     function(accessToken, refreshToken, profile, done) {
       console.log(userInfo.nameText);
-      console.log(profile);
-      userInfo.nameText = "Hello, " + profile.name.givenName + "!";
+      console.log(profile.displayName);
+      let firstName = profile.displayName.slice(
+        0,
+        profile.displayName.indexOf(" ")
+      );
+      userInfo.nameText = "Hello, " + firstName + "!";
       userInfo.userId = profile.id;
       console.log(userInfo.nameText);
       console.log("Finished facebook logging");
