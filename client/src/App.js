@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       view: "Sleep diary",
       entries: [],
-      nameText: "login"
+      nameText: "login",
+      uid: 0
     };
 
     this.handleCalendarClick = this.handleCalendarClick.bind(this);
@@ -89,9 +90,10 @@ class App extends Component {
 
     fetch("/profile")
       .then(res => res.json())
-      .then(name => {
+      .then(profile => {
         this.setState({
-          nameText: name
+          nameText: profile.nameText,
+          uid: profile.userId
         });
       });
   }
@@ -118,6 +120,7 @@ class App extends Component {
         {this.state.view === "Diary entry: " && (
           <DayEntry
             date={this.state.date}
+            uid={this.state.uid}
             disableSubmit={!this.state.entries[this.state.date] ? "" : "true"}
             onDiarySubmit={this.handleDiarySubmit}
             onDiaryCancel={this.handleDiaryCancel}
