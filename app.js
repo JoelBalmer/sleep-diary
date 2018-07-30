@@ -60,8 +60,7 @@ passport.use(
     {
       clientID: FACEBOOK_APP_ID,
       clientSecret: FACEBOOK_APP_SECRET,
-      callbackURL:
-        "https://sleep-diary-app.herokuapp.com/auth/facebook/callback"
+      callbackURL: "https://localhost:3000/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
       console.log(userInfo.nameText);
@@ -95,7 +94,7 @@ app.get(
 // facbeook login error
 const loginError = (req, res, next) => {
   console.log(`There was a facebook login error`);
-  res.redirect("https://sleep-diary-app.herokuapp.com/");
+  res.redirect("https://localhost:3000/");
 };
 app.get("/login", loginError);
 
