@@ -49,7 +49,6 @@ app.use(cookieParser());
 // Routes
 app.use("/entries", entriesRouter);
 app.get("/profile", function(req, res, next) {
-  res.json(userInfo.nameText);
   let data = {
     userId: userInfo.userId,
     nameText: userInfo.nameText
