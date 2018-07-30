@@ -10,6 +10,14 @@ router.get("/", function(req, res, next) {
   });
 });
 
+// @route   GET entries/uid
+// @desc    Returns entries for the given user
+router.get("/:uid", (req, res, next) => {
+  Entry.find({ uid: req.params.uid }).then(entries => {
+    res.json(entries);
+  });
+});
+
 // @route   GET entries/entry
 // @desc    Returns a diary entry
 router.get("/entry/:date", function(req, res, next) {

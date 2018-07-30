@@ -50,6 +50,11 @@ app.use(cookieParser());
 app.use("/entries", entriesRouter);
 app.get("/profile", function(req, res, next) {
   res.json(userInfo.nameText);
+  let data = {
+    userId: userInfo.userId,
+    nameText: userInfo.nameText
+  };
+  res.json(data);
 });
 
 // facebook auth 2
