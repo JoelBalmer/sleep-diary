@@ -49,7 +49,7 @@ app.use(cookieParser());
 // Routes
 app.use("/entries", entriesRouter);
 app.get("/profile", function(req, res, next) {
-  res.send(userInfo.nameText);
+  res.json(userInfo.nameText);
 });
 
 // facebook auth 2

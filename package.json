@@ -7,7 +7,10 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "backend": "nodemon --inspect app.js",
+    "frontend": "cd client && npm start",
+    "dev": "npm run backend && sleep 2 && npm run frontend"
   },
   "dependencies": {
     "compression": "^1.7.3",
