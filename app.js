@@ -49,7 +49,11 @@ app.use(cookieParser());
 // Routes
 app.use("/entries", entriesRouter);
 app.get("/profile", function(req, res, next) {
-  res.json(userInfo.nameText);
+  let data = {
+    userId: userInfo.userId,
+    nameText: userInfo.nameText
+  };
+  res.json(data);
 });
 
 // facebook auth 2
@@ -63,16 +67,12 @@ passport.use(
       callbackURL: "https://localhost:3000/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
-      console.log(userInfo.nameText);
-      console.log(profile.displayName);
       let firstName = profile.displayName.slice(
         0,
         profile.displayName.indexOf(" ")
       );
       userInfo.nameText = "Hello, " + firstName + "!";
       userInfo.userId = profile.id;
-      console.log(userInfo.nameText);
-      console.log("Finished facebook logging");
 
       return done(null);
     }

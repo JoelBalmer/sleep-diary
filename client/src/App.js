@@ -89,9 +89,10 @@ class App extends Component {
 
     fetch("/profile")
       .then(res => res.json())
-      .then(name => {
+      .then(profile => {
         this.setState({
-          nameText: name
+          nameText: profile.nameText,
+          uid: profile.userId
         });
       });
   }

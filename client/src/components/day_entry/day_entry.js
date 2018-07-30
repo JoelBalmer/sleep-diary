@@ -53,8 +53,13 @@ class DayEntry extends React.Component {
 
   onSubmit(event) {
     //create payload
+    const userId = Number(document.getElementsByName("uid")[0].innerHTML);
+    if (!userId) {
+      alert("Please login to submit a diary entry");
+      return;
+    }
     var payload = {
-      uid: Number(document.getElementsByName("uid")[0].innerHTML),
+      uid: userId,
       date: new Date(document.getElementsByName("date")[0].innerHTML),
       start_bed: document.getElementsByName("got into bed")[0].value,
       start_sleep: document.getElementsByName("fell asleep")[0].value,
@@ -165,7 +170,7 @@ class DayEntry extends React.Component {
           {this.props.date.toString()}
         </span>
         <span hidden name="uid">
-          {"10155988094031140"}
+          {this.props.uid}
         </span>
         <div className="diary-entry col-lg-7 col-md-7 col-sm-7 col-xs-7">
           <h1>Sleep times</h1>
