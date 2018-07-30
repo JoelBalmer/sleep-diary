@@ -87,11 +87,13 @@ class App extends Component {
         });
       });
 
-    fetch("/profile").then(res => {
-      this.setState({
-        nameText: res
+    fetch("/profile")
+      .then(res => res.json())
+      .then(name => {
+        this.setState({
+          nameText: name
+        });
       });
-    });
   }
 
   render() {
