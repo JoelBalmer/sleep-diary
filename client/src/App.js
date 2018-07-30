@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       view: "Sleep diary",
       entries: [],
-      nameText: "login",
+      nameText: "Login",
       uid: 0
     };
 
@@ -75,19 +75,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("/entries")
-      .then(res => res.json())
-      .then(entries => {
-        let newEntries = [];
-        entries.forEach(entry => {
-          newEntries.push(new Date(entry.date));
-        });
-        this.setState({
-          view: "Sleep diary",
-          entries: newEntries
-        });
-      });
-
     fetch("/profile")
       .then(res => res.json())
       .then(profile => {
@@ -95,6 +82,20 @@ class App extends Component {
           nameText: profile.nameText,
           uid: profile.userId
         });
+        if (Number(profile.userId)) {
+          fetch("/entries/" + profile.userId)
+            .then(res => res.json())
+            .then(entries => {
+              let newEntries = [];
+              entries.forEach(entry => {
+                newEntries.push(new Date(entry.date));
+              });
+              this.setState({
+                view: "Sleep diary",
+                entries: newEntries
+              });
+            });
+        }
       });
   }
 
