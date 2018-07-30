@@ -10,7 +10,7 @@ var compression = require("compression");
 var helmet = require("helmet");
 var passport = require("passport");
 var FacebookStrategy = require("passport-facebook").Strategy;
-var userInfo = require("./client/src/user_info");
+var userInfo = require("./user_info");
 
 //SERVER SETUP
 var app = express();
@@ -48,6 +48,9 @@ app.use(cookieParser());
 
 // Routes
 app.use("/entries", entriesRouter);
+app.get("/profile", function(req, res, next) {
+  res.send(userInfo.nameText);
+});
 
 // facebook auth 2
 var FACEBOOK_APP_ID = require("./config/keys").FACEBOOK_APP_ID;

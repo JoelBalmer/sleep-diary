@@ -12,7 +12,8 @@ class App extends Component {
 
     this.state = {
       view: "Sleep diary",
-      entries: []
+      entries: [],
+      nameText: "login"
     };
 
     this.handleCalendarClick = this.handleCalendarClick.bind(this);
@@ -85,6 +86,12 @@ class App extends Component {
           entries: newEntries
         });
       });
+
+    fetch("/profile").then(res => {
+      this.setState({
+        nameText: res
+      });
+    });
   }
 
   render() {
@@ -97,7 +104,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Navbar title={title} />
+        <Navbar title={title} nameText={this.state.nameText} />
         <h4>Click {helpInfo} to make an entry</h4>
         {this.state.view === "Sleep diary" && (
           <Calendar

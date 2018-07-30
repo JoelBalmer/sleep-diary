@@ -30,7 +30,7 @@ router.delete("/entry", (req, res) => {
 });
 
 // @route   POST api/users/test
-// @desc    Tests users route
+// @desc    Update entry
 router.post("/entry", (req, res) => {
   const bodyObject = {
     uid: req.body.uid,
