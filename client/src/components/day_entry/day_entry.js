@@ -52,13 +52,20 @@ class DayEntry extends React.Component {
   }
 
   onSubmit(event) {
+    const userId = Number(document.getElementsByName("uid")[0].innerHTML);
+    if (!userId) {
+      alert("Please login to submit a diary entry");
+      return;
+    }
+
     //create payload
     const userId = Number(document.getElementsByName("uid")[0].innerHTML);
     if (!userId) {
       alert("Please login to submit a diary entry");
       return;
     }
-    var payload = {
+
+    let payload = {
       uid: userId,
       date: new Date(document.getElementsByName("date")[0].innerHTML),
       start_bed: document.getElementsByName("got into bed")[0].value,

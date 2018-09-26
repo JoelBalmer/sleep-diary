@@ -1,4 +1,4 @@
 module.exports = {
-  nameText: "Login",
-  userId: 0
+  userId: "0",
+  nameText: "Login"
 };

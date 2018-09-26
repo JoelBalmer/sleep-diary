@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       view: "Sleep diary",
       entries: [],
-      nameText: "Login"
+      nameText: "Login",
+      uid: 0
     };
 
     this.handleCalendarClick = this.handleCalendarClick.bind(this);
@@ -81,7 +82,6 @@ class App extends Component {
           nameText: profile.nameText,
           uid: profile.userId
         });
-
         if (Number(profile.userId)) {
           fetch("/entries/" + profile.userId)
             .then(res => res.json())
@@ -121,6 +121,7 @@ class App extends Component {
         {this.state.view === "Diary entry: " && (
           <DayEntry
             date={this.state.date}
+            uid={this.state.uid}
             disableSubmit={!this.state.entries[this.state.date] ? "" : "true"}
             onDiarySubmit={this.handleDiarySubmit}
             onDiaryCancel={this.handleDiaryCancel}
