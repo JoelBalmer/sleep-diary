@@ -59,7 +59,6 @@ class DayEntry extends React.Component {
     }
 
     //create payload
-    const userId = Number(document.getElementsByName("uid")[0].innerHTML);
     if (!userId) {
       alert("Please login to submit a diary entry");
       return;
