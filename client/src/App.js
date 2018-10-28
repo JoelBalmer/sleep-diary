@@ -4,6 +4,7 @@ import "./App.css";
 import Calendar from "./components/calendar/calendar.js";
 import Navbar from "./components/navbar/navbar.js";
 import DayEntry from "./components/day_entry/day_entry.js";
+import Overview from "./components/overview/overview.js";
 const moment = require("moment");
 
 class App extends Component {
@@ -112,11 +113,14 @@ class App extends Component {
         <Navbar title={title} nameText={this.state.nameText} />
         <h4>Click {helpInfo} to make an entry</h4>
         {this.state.view === "Sleep diary" && (
-          <Calendar
-            date={this.state.date}
-            entries={this.state.entries}
-            handleDayClick={this.handleCalendarClick}
-          />
+          <div>
+            <Overview />
+            <Calendar
+              date={this.state.date}
+              entries={this.state.entries}
+              handleDayClick={this.handleCalendarClick}
+            />
+          </div>
         )}
         {this.state.view === "Diary entry: " && (
           <DayEntry
