@@ -23,6 +23,7 @@
     "morgan": "~1.9.0",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react-vis": "^1.11.4"
   }
 }
