@@ -38,8 +38,6 @@ class Overview extends React.Component {
   }
 
   render() {
-    const { results } = this.state;
-
     return (
       <div className="overview">
         <h1 className="overview-title">This is your overview!</h1>

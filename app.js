@@ -11,7 +11,7 @@ var helmet = require("helmet");
 var passport = require("passport");
 var FacebookStrategy = require("passport-facebook").Strategy;
 var userInfo = require("./user_info");
-const config = require("./config.keys");
+const config = require("./config/keys");
 
 //SERVER SETUP
 var app = express();
@@ -65,8 +65,7 @@ passport.use(
     {
       clientID: FACEBOOK_APP_ID,
       clientSecret: FACEBOOK_APP_SECRET,
-      callbackURL:
-        "https://sleep-diary-app.herokuapp.com/auth/facebook/callback"
+      callbackURL: config.url + "/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
       let firstName = profile.displayName.slice(
