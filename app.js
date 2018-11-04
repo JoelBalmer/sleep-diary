@@ -65,7 +65,7 @@ passport.use(
     {
       clientID: FACEBOOK_APP_ID,
       clientSecret: FACEBOOK_APP_SECRET,
-      callbackURL: config.url + "/auth/facebook/callback"
+      callbackURL: config.url + "auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
       let firstName = profile.displayName.slice(
