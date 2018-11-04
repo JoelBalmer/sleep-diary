@@ -11,6 +11,7 @@ var helmet = require("helmet");
 var passport = require("passport");
 var FacebookStrategy = require("passport-facebook").Strategy;
 var userInfo = require("./user_info");
+const config = require("./config.keys");
 
 //SERVER SETUP
 var app = express();
@@ -57,14 +58,15 @@ app.get("/profile", function(req, res, next) {
 });
 
 // facebook auth 2
-var FACEBOOK_APP_ID = require("./config/keys").FACEBOOK_APP_ID;
-var FACEBOOK_APP_SECRET = require("./config/keys").FACEBOOK_APP_SECRET;
+var FACEBOOK_APP_ID = config.FACEBOOK_APP_ID;
+var FACEBOOK_APP_SECRET = config.FACEBOOK_APP_SECRET;
 passport.use(
   new FacebookStrategy(
     {
       clientID: FACEBOOK_APP_ID,
       clientSecret: FACEBOOK_APP_SECRET,
-      callbackURL: "https://localhost:3000/auth/facebook/callback"
+      callbackURL:
+        "https://sleep-diary-app.herokuapp.com/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
       let firstName = profile.displayName.slice(
@@ -94,7 +96,7 @@ app.get(
 // facbeook login error
 const loginError = (req, res, next) => {
   console.log(`There was a facebook login error`);
-  res.redirect("https://localhost:3000/");
+  res.redirect(config.url);
 };
 app.get("/login", loginError);
 
@@ -129,7 +131,7 @@ app.use(function(err, req, res, next) {
 });
 
 // DB Config
-const db = process.env.MONGODB_URI || require("./config/keys").mongoURI;
+const db = process.env.MONGODB_URI || config.mongoURI;
 
 // Connect to MongoDB
 mongoose
