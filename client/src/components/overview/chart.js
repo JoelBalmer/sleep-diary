@@ -12,7 +12,7 @@ import "./chart-style.css";
 const Chart = props => {
   const dataArray = props.data.map(currentDataPoint => {
     const date = new Date(currentDataPoint.date);
-    var dateString = "" + date.getDay() + "/" + (date.getMonth() + 1);
+    var dateString = date.getDate() + "/" + (date.getMonth() + 1);
 
     return {
       x: dateString,
@@ -21,10 +21,10 @@ const Chart = props => {
   });
 
   return (
-    <XYPlot width={1000} height={500} xType="ordinal">
+    <XYPlot className="XYPlot" width={1000} height={500} xType="ordinal">
       <VerticalGridLines />
       <HorizontalGridLines />
-      <XAxis title="Date" />
+      <XAxis title="Date" tickLabelAngle={-45} />
       <YAxis title="Rating" />
       <LineMarkSeries
         className="linemark-series-example"

@@ -11,7 +11,7 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3001/entries")
+    fetch("http://localhost:3001/entries/10156135339231140")
       .then(response => {
         if (response.ok) {
           let data = response.json();
