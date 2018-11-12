@@ -107,14 +107,17 @@ class App extends Component {
         : this.state.view + moment(this.state.date).format("DD/MM/YY");
 
     let helpInfo = this.state.view === "Sleep diary" ? "a day" : "save";
+    const isLoggedIn = Number(this.state.uid) !== 0;
+    console.log(isLoggedIn, Number(this.state.uid));
 
     return (
       <div className="App">
         <Navbar title={title} nameText={this.state.nameText} />
-        <h4>Click {helpInfo} to make an entry</h4>
         {this.state.view === "Sleep diary" && (
           <div>
-            <Overview />
+            {isLoggedIn && <Overview uid={Number(this.state.uid)} />}
+            <h1>Calendar</h1>
+            <h4>Click {helpInfo} to make an entry</h4>
             <Calendar
               date={this.state.date}
               entries={this.state.entries}

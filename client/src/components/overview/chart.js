@@ -21,7 +21,7 @@ const Chart = props => {
   });
 
   return (
-    <XYPlot className="XYPlot" width={1000} height={500} xType="ordinal">
+    <XYPlot className="XYPlot" width={500} height={250} xType="ordinal">
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis title="Date" tickLabelAngle={-45} />
