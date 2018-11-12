@@ -11,7 +11,8 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/entries/10156135339231140")
+    const entriesUrl = "/entries/" + this.props.uid;
+    fetch(entriesUrl)
       .then(response => {
         if (response.ok) {
           let data = response.json();
@@ -40,7 +41,8 @@ class Overview extends React.Component {
   render() {
     return (
       <div className="overview">
-        <h1 className="overview-title">This is your overview!</h1>
+        <h1 className="overview-title">Overview</h1>
+        <h4>How well you feel you slept over time</h4>
         <div className="graph">
           <Chart data={this.state.results} />
         </div>
