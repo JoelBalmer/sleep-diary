@@ -13,9 +13,11 @@ router.get("/", function(req, res, next) {
 // @route   GET entries/uid
 // @desc    Returns entries for the given user
 router.get("/:uid", (req, res, next) => {
-  Entry.find({ uid: req.params.uid }).then(entries => {
-    res.json(entries);
-  });
+  Entry.find({ uid: req.params.uid })
+    .sort({ date: "asc" })
+    .then(entries => {
+      res.json(entries);
+    });
 });
 
 // @route   GET entries/entry

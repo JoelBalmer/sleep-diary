@@ -108,7 +108,6 @@ class App extends Component {
 
     let helpInfo = this.state.view === "Sleep diary" ? "a day" : "save";
     const isLoggedIn = Number(this.state.uid) !== 0;
-    console.log(isLoggedIn, Number(this.state.uid));
 
     return (
       <div className="App">
