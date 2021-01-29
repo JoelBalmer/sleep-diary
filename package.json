@@ -10,7 +10,9 @@
     "heroku-postbuild": "cd client && npm install && npm run build",
     "backend": "nodemon --inspect app.js",
     "frontend": "cd client && npm start",
-    "dev": "npm run backend | npm run frontend"
+    "dev": "npm run backend | npm run frontend",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "compression": "^1.7.3",
@@ -24,6 +26,8 @@
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "path": "^0.12.7",
-    "react-vis": "^1.11.4"
-  }
+    "react-vis": "^1.11.4",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
